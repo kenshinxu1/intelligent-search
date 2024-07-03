@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<view template="solution-guidance:/templates/solution.html" type="html">
+	<label>Intelligent Search</label>
+</view>

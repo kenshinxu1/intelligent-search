@@ -1,0 +1,6 @@
+<nav>
+    <view name="start" default="true"/>
+    <view name="solution" />
+    <view name="dashboard" />
+    <view name="search" />
+</nav>
