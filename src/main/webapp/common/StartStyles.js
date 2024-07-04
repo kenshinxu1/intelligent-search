@@ -1,5 +1,7 @@
 import styled from 'styled-components';
-// import { variable } from './themes';
+import { createGlobalStyle } from "styled-components";
+import { variables } from "@splunk/themes";
+
 
 const StyledContainer = styled.div`
     display: block;
@@ -10,9 +12,21 @@ const StyledContainer = styled.div`
 
 const StyledGreeting = styled.div`
     font-weight: bold;
-    color: black;
+    color: white;
+    font-size: xx-large;
+    margin: auto;
+`;
+const StyledTitle = styled.div`
+    font-weight: bold;
+    color: #f0581f;
     font-size: xx-large;
     margin: auto;
 `;
 
-export { StyledContainer, StyledGreeting };
+const GlobalStyles = createGlobalStyle`
+    body {
+        background-color: ${variables.backgroundColorPage};
+    }
+`;
+
+export { StyledContainer, StyledGreeting ,GlobalStyles,StyledTitle};

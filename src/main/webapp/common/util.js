@@ -1,7 +1,4 @@
-import { createRESTURL } from '@splunk/splunk-utils/url';
-import { app, username } from '@splunk/splunk-utils/config';
-import { handleError } from '@splunk/splunk-utils/fetch';
-
+import {createRESTURL} from '@splunk/splunk-utils/url';
 
 
 function generateURLParams(params, isDefault) {

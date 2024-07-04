@@ -1,15 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import CardLayout from '@splunk/react-ui/CardLayout';
 import Card from '@splunk/react-ui/Card';
 import PropTypes from 'prop-types';
-import { find, map } from 'lodash';
-import Link from '@splunk/react-ui/Link';
-
+import {map} from 'lodash';
 
 
 AppPanel.propTypes = {
     cardList: PropTypes.array,
-    tab:PropTypes.string
+    tab:PropTypes.number
 };
 
 function AppPanel(props) {
@@ -27,22 +25,19 @@ function AppPanel(props) {
         verticalAlign: 'bottom',
         objectFit:'fill'
     };
-    const { cardList, tab} = props;
+    const { cardList, tab } = props;
     return (
-        <CardLayout cardWidth={200}  wrapCards={true} style={{maxWidth: 900}}>
-
+        <CardLayout cardWidth={tab?tab:250}  wrapCards={true} style={{maxWidth: 1500}}>
             {
                 map(cardList, card => {
-
                     return  <Card to={card.path} openInNewContext>
-                              <Card.Header title={card.title} truncateTitle={false} subtitle={`Download Count:${card.download_count}`} />
+                              <Card.Header title={card.title?card.title:card.app_name} truncateTitle={false} subtitle={`Download Count:${card.download_count}`} />
                                 <Card.Body>
                                     <img src={card.icon} alt="empty" style={imgStyle}/>
                                 </Card.Body>
                             </Card>
                 })
             }
-
         </CardLayout>
     );
 }

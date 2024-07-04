@@ -9,7 +9,7 @@ import ColumnLayout from '@splunk/react-ui/ColumnLayout';
 
 AppPanel.propTypes = {
     cardList: PropTypes.array,
-    tab:PropTypes.string
+    tab:PropTypes.number
 };
 
 function AppPanel(props) {
@@ -30,13 +30,13 @@ function AppPanel(props) {
     const colStyle = {  padding: 10, Height: 30 };
     const { cardList, tab} = props;
     return (
-        <CardLayout cardWidth={700} cardHeight={300} wrapCards={true} style={{maxWidth: 900}}>
+        <CardLayout cardWidth={tab?tab:700} cardHeight={300} wrapCards={true} style={{maxWidth: 900}}>
 
             {
                 map(cardList, card => {
 
                     return  <Card to={card.path} openInNewContext>
-                              <Card.Header title={card.title} truncateTitle={false} subtitle={`Download Count:${card.download_count}`} />
+                              <Card.Header title={card.app_name} truncateTitle={false} subtitle={`Download Count:${card.download_count}`} />
                                 <Card.Body>
                                     <div>{card.description}</div>
                                 </Card.Body>

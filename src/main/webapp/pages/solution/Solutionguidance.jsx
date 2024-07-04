@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Button from '@splunk/react-ui/Button';
 import P from '@splunk/react-ui/Paragraph';
 import TabLayout from '@splunk/react-ui/TabLayout';
+import TextArea from '@splunk/react-ui/TextArea';
 import Text from '@splunk/react-ui/Text';
 import RobotFace from '@splunk/react-icons/RobotFace';
 import LayersTriple from '@splunk/react-icons/LayersTriple';
@@ -18,15 +19,18 @@ import ColumnLayout from '@splunk/react-ui/ColumnLayout';
 import {defaultFetchInit, handleError, handleResponse} from '@splunk/splunk-utils/fetch';
 import SearchJob from '@splunk/search-job';
 import WaitSpinner from '@splunk/react-ui/WaitSpinner';
+import {StyledContainer, StyledTitle} from '../../common/StartStyles';
 
 
 import {
+    AI_apps,
     APP_CATEGORY_URL,
     APP_SEARCH_URL,
-    epic_apps,
     guide_apps1,
     guide_apps2,
-    guide_apps3
+    guide_apps3,
+    tools_apps,
+    visual_apps
 } from '../../common/constants';
 import {createURL, getPredictSPL} from '../../common/util';
 import AppPanel from '../../common/AppPanel';
@@ -184,8 +188,8 @@ class Solutionguidance extends Component {
     };
 
     render() {
-        const style = { width: 300, height: 300, margin: '0 20px 20px 0' };
-        const colStyle = { background: '#ffffff',  minHeight: 80 };
+        const style = { width: 350, height: 350, margin: '0 20px 20px 0' };
+        const colStyle = { background: "${variables.backgroundColorPage}", minHeight: "100px"};
         const { name } = this.props;
         const { counter,
                 search,
@@ -204,149 +208,110 @@ class Solutionguidance extends Component {
 
             <TabLayout defaultActivePanelId="search" iconSize="large" layout="vertical">
                 <TabLayout.Panel label="Intelligent Search" panelId="search" icon={<RobotFace variant="filled"/>}>
-                    <ControlGroup
-                        label={'App Search'}
-                        controlsLayout="none"
-                    >
-                        <ColumnLayout>
-                            <ColumnLayout.Row>
-                                <ColumnLayout.Column span={20} style={colStyle}>
-                                    <Text multiline
-                                          value={this.state.value}
-                                          placeholder="Please describe the problem you want to solve.."
-                                          onChange={this.handleSearchChange} />
-                                </ColumnLayout.Column>
-                                <ColumnLayout.Column span={4} style={colStyle}>
-                                    <Button
-                                        label="search"
-                                        inline
-                                        appearance="primary"
-                                        size="medium"
-                                        onClick={this.handleSearch}
-                                        disabled={searching}
-                                    />
-                                </ColumnLayout.Column>
-                            </ColumnLayout.Row>
-                        </ColumnLayout>
+                    <div style={{margin: 40}}>
+                        <ControlGroup
+                            label={'App Search'}
+                            controlsLayout="none"
+                            size="medium"
+                        >
+                            <ColumnLayout>
+                                <ColumnLayout.Row>
+                                    <ColumnLayout.Column span={20} style={colStyle}>
+                                        <Text multiline
+                                                  value={this.state.value}
+                                                  placeholder="Please enter the assistance you seek through Splunk apps.."
+                                                  onChange={this.handleSearchChange}
+                                                  style={{height: '100px'}}
+                                        />
+                                    </ColumnLayout.Column>
+                                    <ColumnLayout.Column span={4} style={colStyle}>
+                                        <Button
+                                            label="search"
+                                            inline
+                                            appearance="primary"
+                                            size="big"
+                                            onClick={this.handleSearch}
+                                            disabled={searching}
+                                        />
+                                    </ColumnLayout.Column>
+                                </ColumnLayout.Row>
+                            </ColumnLayout>
+                        </ControlGroup>
+                    </div>
+                    <div style={{margin: 40}}>
+                        <ControlGroup
+                            label={'Result:'}
+                            controlsLayout="none"
+                            style={{width: '1500px'}}
+                        >
+                            {
+                                searching ? (<WaitSpinner size="large"/>) : app_solution ? (
+                                    <Card style={style}
+                                          to={app_solution.installed ? null : app_solution.path} openInNewContext>
+                                        <Card.Header title={app_solution.title} truncateTitle={false}
+                                                     subtitle={`Download Count:${app_solution.download_count} ${app_solution.installed ? "   Already installed" : ""}`}/>
+                                        <Card.Body>
+                                            <img src={app_solution.icon} alt="empty" style={{
+                                                height: 150,
+                                                width: 150,
+                                                display: 'block',
+                                                margin: '0 auto'
 
-                    </ControlGroup>
-                    <ControlGroup
-                        label={'Result:'}
-                        controlsLayout="none"
-                        style={{ width: '1500px' }}
-                    >
-                        {
-
-                            searching?(<WaitSpinner size="large" />):app_solution?(
-                                <Card style={style}
-                                      to={ app_solution.installed?null:app_solution.path} openInNewContext>
-                                <Card.Header title={app_solution.title} truncateTitle={false}
-                                             subtitle={`Download Count:${app_solution.download_count} ${app_solution.installed?"   Already installed":""}`}/>
-                                <Card.Body>
-                                    <img src={app_solution.icon} alt="empty" style={{
-                                        height: 150,
-                                        width: 150,
-                                        display: 'block',
-                                        margin: '0 auto'
-
-                                    }}/>
-                                </Card.Body>
-                            </Card>): null
-                        }
-                    </ControlGroup>
-                    <ControlGroup
-                        label={'Others References'}
-                        controlsLayout="none"
-                        style={{ width: '1500px' }}
-                    >
-                        <AppPanel cardList={app_results}/>
-                        {app_results && app_results.length > 0?(<Paginator
-                            onChange={this.handlePageChange}
-                            current={this.state.page}
-                            alwaysShowLastPageLink
-                            totalPages={8}
-                        />):null}
-                   </ControlGroup>
+                                            }}/>
+                                        </Card.Body>
+                                    </Card>) : null
+                            }
+                        </ControlGroup>
+                    </div>
+                    <div style={{margin: 40}}>
+                        <ControlGroup
+                            label={'Others References'}
+                            controlsLayout="none"
+                            style={{width: '2500px'}}
+                        >
+                            <AppPanel cardList={app_results} tab={200}/>
+                            {app_results && app_results.length > 0 ? (<Paginator
+                                onChange={this.handlePageChange}
+                                current={this.state.page}
+                                alwaysShowLastPageLink
+                                totalPages={8}
+                            />) : null}
+                        </ControlGroup>
+                    </div>
                 </TabLayout.Panel>
                 <TabLayout.Panel label="Collections" panelId="digger" icon={<LayersTriple variant="filled"/>}>
                     <TabLayout defaultActivePanelId="learner" iconSize="large" >
                         <TabLayout.Panel label="Splunk Learner" panelId="learner" icon={<BookOpen variant="filled"/>}>
-                            <div>
-                                <Heading level={1}>Solution Implementation</Heading>
-                                <P><AppPanel cardList={guide_apps1} open={true}/></P>
-                                <Heading level={1}>Features</Heading>
-                                <P><AppPanel cardList={guide_apps2} open={true}/></P>
-                                <Heading level={1}>Domain</Heading>
+                            <div style={{margin: 20}}>
+                                <Heading level={1} style={{color: "#f0581f"}}>SPL - from Beginner to Master</Heading>
+                                <P><AppPanel cardList={guide_apps1} open={true} tab={400}/></P>
+                            </div>
+                            <div style={{margin: 20}}>
+                                <Heading level={1}>Everything you need to know to build a dashboard !</Heading>
+                                <P><AppPanel cardList={guide_apps2} open={true} tab={300}/></P>
+                            </div>
+                            <div style={{margin: 20}}>
+                                <Heading level={1}>Out of box Essential Use Cases!</Heading>
                                 <P><AppPanel cardList={guide_apps3} open={true}/></P>
                             </div>
                         </TabLayout.Panel>
                         <TabLayout.Panel label="Advanced Tools" panelId="utility" icon={<Wrench variant="filled"/>}>
-                            <div>
-                                <Heading level={1}>Solution Implementation</Heading>
-                                <P><AppPanel cardList={guide_apps1} open={true}/></P>
-                                <Heading level={1}>Features</Heading>
-                                <P><AppPanel cardList={guide_apps2} open={true}/></P>
-                                <Heading level={1}>Domain</Heading>
-                                <P><AppPanel cardList={guide_apps3} open={true}/></P>
+                            <div style={{margin: 20}}>
+                                <Heading level={1}>Advanced tools to make your life easier!</Heading>
+                                <PremiumPanel cardList={tools_apps} tab={400}/>
                             </div>
                         </TabLayout.Panel>
                         <TabLayout.Panel label="Visualizations" panelId="visual" icon={<ChartPie variant="filled"/>}>
                             <div style={{margin: 20}}>
-                                <Heading level={1}>Solution Implementation</Heading>
-                                <P><AppPanel cardList={guide_apps1} open={true}/></P>
-                                <Heading level={1}>Features</Heading>
-                                <P><AppPanel cardList={guide_apps2} open={true}/></P>
-                                <Heading level={1}>Domain</Heading>
-                                <P><AppPanel cardList={guide_apps3} open={true}/></P>
+                                <Heading level={1}>Make your Dashboards look more amazing.!</Heading>
+                                <P><AppPanel cardList={visual_apps} open={true}/></P>
                             </div>
                         </TabLayout.Panel>
-                        <TabLayout.Panel label="Preuium Solution" panelId="search" icon={<Star variant="filled"/>}>
-                            <PremiumPanel cardList={epic_apps}/>
+                        <TabLayout.Panel label="Splunk AI" panelId="search" icon={<Star variant="filled"/>}>
+                            <PremiumPanel cardList={AI_apps}/>
                         </TabLayout.Panel>
                     </TabLayout>
                 </TabLayout.Panel>
-                {/*<TabLayout.Panel*/}
-                {/*    label="Utilities"*/}
-                {/*    panelId="tools"*/}
-                {/*    icon={<ExternalViz/>}*/}
-                {/*    style={{margin: 20}}*/}
-                {/*>*/}
-                {/*    <Multiselect values={['1','2','3','4','5','6','7','8']} onChange={this.handleChange} inline>*/}
-                {/*        <Multiselect.Option label="Cloud Connect" value="1" />*/}
-                {/*        <Multiselect.Option label="Network Toolkit" value="2" />*/}
-                {/*        <Multiselect.Option label="Alert Customization" value="3" />*/}
-                {/*        <Multiselect.Option label="Database" value="4" />*/}
-                {/*        <Multiselect.Option label="SAML Auth" value="5" />*/}
-                {/*        <Multiselect.Option label="Sensor Connect" value="6" />*/}
-                {/*        <Multiselect.Option label="Cluster Monitoring" value="7" />*/}
-                {/*        <Multiselect.Option label="Visualization" value="8" />*/}
-                {/*    </Multiselect>*/}
-                {/*    <AppPanel cardList={tools_apps}/>*/}
-                {/*</TabLayout.Panel>*/}
-                {/*<TabLayout.Panel*/}
-                {/*    label="Guide"*/}
-                {/*    panelId="guide"*/}
-                {/*    icon={<ReportSearch />}*/}
-                {/*    style={{ margin: 20 }}*/}
-                {/*>*/}
-                {/*    <div>*/}
-                {/*        <Heading level={1}>Solution Implementation</Heading>*/}
-                {/*        <P><AppPanel cardList={guide_apps1} open={true}/></P>*/}
-                {/*        <Heading level={1}>Features</Heading>*/}
-                {/*        <P><AppPanel cardList={guide_apps2} open={true}/></P>*/}
-                {/*        <Heading level={1}>Domain</Heading>*/}
-                {/*        <P><AppPanel cardList={guide_apps3} open={true}/></P>*/}
-                {/*    </div>*/}
-
-                {/*</TabLayout.Panel>*/}
-                {/*<TabLayout.Panel*/}
-                {/*    label="High Tech"*/}
-                {/*    panelId="tech"*/}
-                {/*    icon={<LightBulb />}*/}
-                {/*    style={{ margin: 20 }}*/}
-                {/*>*/}
-                {/*    <AppPanel cardList={ht_apps}/>*/}
-                {/*</TabLayout.Panel>*/}
             </TabLayout>
         );
     }
