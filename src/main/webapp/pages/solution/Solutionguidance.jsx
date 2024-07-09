@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Button from '@splunk/react-ui/Button';
 import P from '@splunk/react-ui/Paragraph';
 import TabLayout from '@splunk/react-ui/TabLayout';
-import TextArea from '@splunk/react-ui/TextArea';
+import Divider from '@splunk/react-ui/Divider';
 import Text from '@splunk/react-ui/Text';
 import RobotFace from '@splunk/react-icons/RobotFace';
 import LayersTriple from '@splunk/react-icons/LayersTriple';
@@ -19,7 +19,7 @@ import ColumnLayout from '@splunk/react-ui/ColumnLayout';
 import {defaultFetchInit, handleError, handleResponse} from '@splunk/splunk-utils/fetch';
 import SearchJob from '@splunk/search-job';
 import WaitSpinner from '@splunk/react-ui/WaitSpinner';
-import {StyledContainer, StyledTitle} from '../../common/StartStyles';
+import Magnifier from '@splunk/react-icons/Magnifier';
 
 
 import {
@@ -188,6 +188,7 @@ class Solutionguidance extends Component {
     };
 
     render() {
+        const iconProps = { width: 20, height: 20 };
         const style = { width: 350, height: 350, margin: '0 20px 20px 0' };
         const colStyle = { background: "${variables.backgroundColorPage}", minHeight: "100px"};
         const { name } = this.props;
@@ -232,6 +233,7 @@ class Solutionguidance extends Component {
                                             size="big"
                                             onClick={this.handleSearch}
                                             disabled={searching}
+                                            icon={<Magnifier />}
                                         />
                                     </ColumnLayout.Column>
                                 </ColumnLayout.Row>
@@ -284,26 +286,31 @@ class Solutionguidance extends Component {
                         <TabLayout.Panel label="Splunk Learner" panelId="learner" icon={<BookOpen variant="filled"/>}>
                             <div style={{margin: 20}}>
                                 <Heading level={1} style={{color: "#f0581f"}}>SPL - from Beginner to Master</Heading>
+                                <Divider />
                                 <P><AppPanel cardList={guide_apps1} open={true} tab={400}/></P>
                             </div>
                             <div style={{margin: 20}}>
-                                <Heading level={1}>Everything you need to know to build a dashboard !</Heading>
+                                <Heading level={1} style={{color: "#f0581f"}}>Everything you need to know to build a dashboard !</Heading>
+                                <Divider />
                                 <P><AppPanel cardList={guide_apps2} open={true} tab={300}/></P>
                             </div>
                             <div style={{margin: 20}}>
-                                <Heading level={1}>Out of box Essential Use Cases!</Heading>
+                                <Heading level={1} style={{color: "#f0581f"}}>Out of box Essential Use Cases !</Heading>
+                                <Divider />
                                 <P><AppPanel cardList={guide_apps3} open={true}/></P>
                             </div>
                         </TabLayout.Panel>
                         <TabLayout.Panel label="Advanced Tools" panelId="utility" icon={<Wrench variant="filled"/>}>
                             <div style={{margin: 20}}>
-                                <Heading level={1}>Advanced tools to make your life easier!</Heading>
+                                <Heading level={1} style={{color: "#f0581f"}}>Advanced tools to make your life easier !</Heading>
+                                <Divider />
                                 <PremiumPanel cardList={tools_apps} tab={400}/>
                             </div>
                         </TabLayout.Panel>
                         <TabLayout.Panel label="Visualizations" panelId="visual" icon={<ChartPie variant="filled"/>}>
                             <div style={{margin: 20}}>
-                                <Heading level={1}>Make your Dashboards look more amazing.!</Heading>
+                                <Heading level={1} style={{color: "#f0581f"}}>Make your Dashboards look more amazing !</Heading>
+                                <Divider />
                                 <P><AppPanel cardList={visual_apps} open={true}/></P>
                             </div>
                         </TabLayout.Panel>

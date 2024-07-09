@@ -21,6 +21,8 @@ function AppPanel(props) {
         background: '#000000',
         display: 'block',
         margin: '0 auto',
+        width: "45%",
+        height: "85%",
         align:'center',
         verticalAlign: 'bottom',
         objectFit:'fill'

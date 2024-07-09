@@ -13,7 +13,7 @@ const StyledContainer = styled.div`
 const StyledGreeting = styled.div`
     font-weight: bold;
     color: white;
-    font-size: xx-large;
+    font-size: xxx-large;
     margin: auto;
 `;
 const StyledTitle = styled.div`
