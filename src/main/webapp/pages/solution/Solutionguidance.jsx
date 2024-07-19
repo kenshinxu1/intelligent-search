@@ -5,12 +5,12 @@ import P from '@splunk/react-ui/Paragraph';
 import TabLayout from '@splunk/react-ui/TabLayout';
 import Divider from '@splunk/react-ui/Divider';
 import Text from '@splunk/react-ui/Text';
-import RobotFace from '@splunk/react-icons/RobotFace';
-import LayersTriple from '@splunk/react-icons/LayersTriple';
-import Star from '@splunk/react-icons/Star';
-import BookOpen from '@splunk/react-icons/BookOpen';
-import Wrench from '@splunk/react-icons/Wrench';
-import ChartPie from '@splunk/react-icons/ChartPie';
+import RobotFace from '@splunk/react-icons/enterprise/Search';
+import LayersTriple from '@splunk/react-icons/enterprise/List';
+import Star from '@splunk/react-icons/enterprise/Star';
+import BookOpen from '@splunk/react-icons/enterprise/User';
+import Wrench from '@splunk/react-icons/enterprise/Tool';
+import ChartPie from '@splunk/react-icons/enterprise/ChartPie';
 import Paginator from '@splunk/react-ui/Paginator';
 import ControlGroup from '@splunk/react-ui/ControlGroup';
 import Card from '@splunk/react-ui/Card';
@@ -20,10 +20,11 @@ import {defaultFetchInit, handleError, handleResponse} from '@splunk/splunk-util
 import SearchJob from '@splunk/search-job';
 import WaitSpinner from '@splunk/react-ui/WaitSpinner';
 import Magnifier from '@splunk/react-icons/Magnifier';
+import styled  from "styled-components";
 
 
 import {
-    AI_apps,
+    ai_apps,
     APP_CATEGORY_URL,
     APP_SEARCH_URL,
     guide_apps1,
@@ -161,7 +162,7 @@ class Solutionguidance extends Component {
                                 console.log(data.results);
                                 this.setState({app_solution: recommand_app,searching:false})
                             })
-                            .catch(handleError(_('Failed to get solution')))
+                            .catch(handleError(('Failed to get solution')))
                             .catch(error => {
                                 console.log(error);
                                 this.setState({searching:false});
@@ -199,15 +200,51 @@ class Solutionguidance extends Component {
                 app_solution,
                 searching
         } = this.state;
+        const StyledGroup = styled.div`
+            max-width: 1200px;
+        `;
 
-        const message =
-            counter === 0
-                ? 'You should try clicking the button.'
-                : `You've clicked the button ${counter} time${counter > 1 ? 's' : ''}.`;
 
         return (
-
-            <TabLayout defaultActivePanelId="search" iconSize="large" layout="vertical">
+            <TabLayout defaultActivePanelId="digger" iconSize="large" layout="vertical">
+                <TabLayout.Panel label="Top Wanted Apps" panelId="digger" icon={<LayersTriple variant="filled"/>}>
+                    <TabLayout defaultActivePanelId="learner" iconSize="large" >
+                        <TabLayout.Panel label="Beginner" panelId="learner" icon={<BookOpen variant="filled"/>}>
+                            <div style={{margin: 20}}>
+                                <Heading level={1} style={{color: "#f0581f"}}>SPL - from Beginner to Master</Heading>
+                                <Divider />
+                                <P><AppPanel cardList={guide_apps1} open={true} tab={400}/></P>
+                            </div>
+                            <div style={{margin: 20}}>
+                                <Heading level={1} style={{color: "#f0581f"}}>Everything you need to know to build a dashboard !</Heading>
+                                <Divider />
+                                <P><AppPanel cardList={guide_apps2} open={true} tab={300}/></P>
+                            </div>
+                            <div style={{margin: 20}}>
+                                <Heading level={1} style={{color: "#f0581f"}}>Out of box Essential Use Cases !</Heading>
+                                <Divider />
+                                <P><AppPanel cardList={guide_apps3} open={true}/></P>
+                            </div>
+                        </TabLayout.Panel>
+                        <TabLayout.Panel label="Admin Tools" panelId="utility" icon={<Wrench variant="filled"/>}>
+                            <div style={{margin: 20}}>
+                                <Heading level={1} style={{color: "#f0581f"}}>Advanced tools to make your life easier !</Heading>
+                                <Divider />
+                                <PremiumPanel cardList={tools_apps} tab={400}/>
+                            </div>
+                        </TabLayout.Panel>
+                        <TabLayout.Panel label="Visualizations" panelId="visual" icon={<ChartPie variant="filled"/>}>
+                            <div style={{margin: 20}}>
+                                <Heading level={1} style={{color: "#f0581f"}}>Make your Dashboards look more amazing !</Heading>
+                                <Divider />
+                                <P><AppPanel cardList={visual_apps} open={true}/></P>
+                            </div>
+                        </TabLayout.Panel>
+                        <TabLayout.Panel label="Splunk AI" panelId="search" icon={<Star variant="filled"/>}>
+                            <PremiumPanel cardList={ai_apps} tab={900}/>
+                        </TabLayout.Panel>
+                    </TabLayout>
+                </TabLayout.Panel>
                 <TabLayout.Panel label="Intelligent Search" panelId="search" icon={<RobotFace variant="filled"/>}>
                     <div style={{margin: 40}}>
                         <ControlGroup
@@ -244,7 +281,7 @@ class Solutionguidance extends Component {
                         <ControlGroup
                             label={'Result:'}
                             controlsLayout="none"
-                            style={{width: '1500px'}}
+                            style={{ width: '900px'}}
                         >
                             {
                                 searching ? (<WaitSpinner size="large"/>) : app_solution ? (
@@ -269,55 +306,18 @@ class Solutionguidance extends Component {
                         <ControlGroup
                             label={'Others References'}
                             controlsLayout="none"
-                            style={{width: '2500px'}}
+                            style={{ width: '1200px'}}
+                            // style={StyledGroup}
                         >
                             <AppPanel cardList={app_results} tab={200}/>
-                            {app_results && app_results.length > 0 ? (<Paginator
+                            {app_results && app_results.length > 6 ? (<Paginator
                                 onChange={this.handlePageChange}
                                 current={this.state.page}
                                 alwaysShowLastPageLink
-                                totalPages={8}
+                                totalPages={3}
                             />) : null}
                         </ControlGroup>
                     </div>
-                </TabLayout.Panel>
-                <TabLayout.Panel label="Collections" panelId="digger" icon={<LayersTriple variant="filled"/>}>
-                    <TabLayout defaultActivePanelId="learner" iconSize="large" >
-                        <TabLayout.Panel label="Splunk Learner" panelId="learner" icon={<BookOpen variant="filled"/>}>
-                            <div style={{margin: 20}}>
-                                <Heading level={1} style={{color: "#f0581f"}}>SPL - from Beginner to Master</Heading>
-                                <Divider />
-                                <P><AppPanel cardList={guide_apps1} open={true} tab={400}/></P>
-                            </div>
-                            <div style={{margin: 20}}>
-                                <Heading level={1} style={{color: "#f0581f"}}>Everything you need to know to build a dashboard !</Heading>
-                                <Divider />
-                                <P><AppPanel cardList={guide_apps2} open={true} tab={300}/></P>
-                            </div>
-                            <div style={{margin: 20}}>
-                                <Heading level={1} style={{color: "#f0581f"}}>Out of box Essential Use Cases !</Heading>
-                                <Divider />
-                                <P><AppPanel cardList={guide_apps3} open={true}/></P>
-                            </div>
-                        </TabLayout.Panel>
-                        <TabLayout.Panel label="Advanced Tools" panelId="utility" icon={<Wrench variant="filled"/>}>
-                            <div style={{margin: 20}}>
-                                <Heading level={1} style={{color: "#f0581f"}}>Advanced tools to make your life easier !</Heading>
-                                <Divider />
-                                <PremiumPanel cardList={tools_apps} tab={400}/>
-                            </div>
-                        </TabLayout.Panel>
-                        <TabLayout.Panel label="Visualizations" panelId="visual" icon={<ChartPie variant="filled"/>}>
-                            <div style={{margin: 20}}>
-                                <Heading level={1} style={{color: "#f0581f"}}>Make your Dashboards look more amazing !</Heading>
-                                <Divider />
-                                <P><AppPanel cardList={visual_apps} open={true}/></P>
-                            </div>
-                        </TabLayout.Panel>
-                        <TabLayout.Panel label="Splunk AI" panelId="search" icon={<Star variant="filled"/>}>
-                            <PremiumPanel cardList={AI_apps}/>
-                        </TabLayout.Panel>
-                    </TabLayout>
                 </TabLayout.Panel>
             </TabLayout>
         );

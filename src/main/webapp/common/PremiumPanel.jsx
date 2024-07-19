@@ -14,16 +14,16 @@ AppPanel.propTypes = {
 
 function AppPanel(props) {
     const cardContentStyle = {
-        height: 80,
-        background: '#eee',
-        align:'bottom',
-        bottom: 0
+        height: 350,
+        background: '#000000',
+        align:'top',
+        top: 0
     };
     const imgStyle = {
         background: '#000000',
         display: 'inline-block',
-        height: 40,
-        width: 40,
+        height: 70,
+        width: 70,
         // margin: '0 auto',
         align:'left',
     };
@@ -37,7 +37,7 @@ function AppPanel(props) {
 
                     return  <Card to={card.path} openInNewContext>
                               <Card.Header title={card.app_name} truncateTitle={false} subtitle={`Download Count:${card.download_count}`} />
-                                <Card.Body>
+                                <Card.Body style={cardContentStyle}>
                                     <div>{card.description}</div>
                                 </Card.Body>
                                 <Card.Footer>

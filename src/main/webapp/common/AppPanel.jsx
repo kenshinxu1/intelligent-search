@@ -11,12 +11,6 @@ AppPanel.propTypes = {
 };
 
 function AppPanel(props) {
-    const cardContentStyle = {
-        height: 80,
-        background: '#eee',
-        align:'bottom',
-        bottom: 0
-    };
     const imgStyle = {
         background: '#000000',
         display: 'block',
