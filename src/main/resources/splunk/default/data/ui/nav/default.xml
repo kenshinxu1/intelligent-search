@@ -1,7 +1,7 @@
 <nav>
     <view name="start" default="true"/>
     <view name="solution" />
-    <view name="Splunk Apps Analytics" />
+    <view name="splunkbaseanalytics" />
     <view name="dashboards" />
     <view name="search" />
 </nav>

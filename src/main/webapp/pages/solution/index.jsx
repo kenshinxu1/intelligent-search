@@ -5,7 +5,7 @@ import {GlobalStyles, StyledContainer, StyledGreeting} from '../../common/StartS
 import {variables} from '@splunk/themes';
 import Divider from '@splunk/react-ui/Divider';
 import styled from 'styled-components';
-import bg from "../../static/backgroundblue.png";
+import bg from "../../static/bg.png";
 import Solutionguidance from './solutionguidance';
 
 const StyledDivider = styled(Divider)`

@@ -1,0 +1,117 @@
+app_id,app_name,description,_indextime,_sourcetype
+1621,Splunk Common Information Model (CIM),security data model,1721663102,_json
+1603,Splunk Dashboard Examples,build customized dashboard,1721663102,_json
+1603,Splunk Dashboard Examples,build dashboard,1721663102,_json
+3088,Splunk Add-on for Google Cloud Platform,GCP data,1721663102,_json
+3088,Splunk Add-on for Google Cloud Platform,GCP Compute Engine,1721663102,_json
+3088,Splunk Add-on for Google Cloud Platform, collect data from Google Cloud Platform,1721663102,_json
+3088,Splunk Add-on for Google Cloud Platform,GCP pubsub,1721663102,_json
+3088,Splunk Add-on for Google Cloud Platform,"Google Cloud Platform events, logs, and performance metrics data using Google Cloud Platform APIs",1721663102,_json
+3088,Splunk Add-on for Google Cloud Platform,gcp logs,1721663102,_json
+1876,Splunk Add-on for Unix and Linux,unix system,1721663102,_json
+1876,Splunk Add-on for Unix and Linux,linux system,1721663102,_json
+1876,Splunk Add-on for Unix and Linux,unix logs,1721663102,_json
+1876,Splunk Add-on for Unix and Linux,unix network data,1721663102,_json
+1876,Splunk Add-on for Unix and Linux,linux network data,1721663102,_json
+1876,Splunk Add-on for Unix and Linux,unix system data,1721663102,_json
+1876,Splunk Add-on for Unix and Linux,unix infrastructure data,1721663102,_json
+1876,Splunk Add-on for Unix and Linux,linux infrastructure data,1721663102,_json
+742,Splunk Add-on for Microsoft Windows,collect windows data,1721663102,_json
+742,Splunk Add-on for Microsoft Windows,windows data,1721663102,_json
+742,Splunk Add-on for Microsoft Windows,windows system data,1721663102,_json
+742,Splunk Add-on for Microsoft Windows,windows metric,1721663102,_json
+1876,Splunk Add-on for Amazon Web Services (AWS),collect aws data,1721663102,_json
+1876,Splunk Add-on for Amazon Web Services (AWS),aws,1721663102,_json
+1876,Splunk Add-on for Amazon Web Services (AWS),aws ec2,1721663102,_json
+1876,Splunk Add-on for Amazon Web Services (AWS),aws s3,1721663102,_json
+1876,Splunk Add-on for Amazon Web Services (AWS),all aws data,1721663102,_json
+1876,Splunk Add-on for Amazon Web Services (AWS),aws cloudtrail,1721663102,_json
+2757,Palo Alto Networks Add-on for Splunk, Palo Alto,1721663102,_json
+1151,Splunk Supporting Add-on for Active Directory,active directory,1721663102,_json
+3110,Splunk Add-on for Microsoft Cloud Services,azure data,1721663102,_json
+3110,Splunk Add-on for Microsoft Cloud Services,azure,1721663102,_json
+3110,Splunk Add-on for Microsoft Cloud Services,azure blob storage,1721663102,_json
+3110,Splunk Add-on for Microsoft Cloud Services,Azure Event Hubs,1721663102,_json
+3110,Splunk Add-on for Microsoft Cloud Services,microsoft azure,1721663102,_json
+3110,Splunk Add-on for Microsoft Cloud Services,azure storage,1721663102,_json
+3435,Splunk Security Essentials,security use cases,1721663102,_json
+3435,Splunk Security Essentials,ES use cases,1721663102,_json
+3435,Splunk Security Essentials,security content,1721663102,_json
+3435,Splunk Security Essentials,security framework,1721663102,_json
+3435,Splunk Security Essentials,threat and hunt security use cases,1721663102,_json
+3435,Splunk Security Essentials, security use cases security use cases,1721663102,_json
+2686,Splunk DB Connect,collect db2 data,1721663102,_json
+2686,Splunk DB Connect,oracle data,1721663102,_json
+2686,Splunk DB Connect,Microsoft SQL Server,1721663102,_json
+2686,Splunk DB Connect,MySQL,1721663102,_json
+2686,Splunk DB Connect,PostgreSQL,1721663102,_json
+2686,Splunk DB Connect,Informix ,1721663102,_json
+2686,Splunk DB Connect,Database,1721663102,_json
+2686,Splunk DB Connect,DB,1721663102,_json
+2686,Splunk DB Connect,collect database data,1721663102,_json
+2686,Splunk DB Connect,DB2 MySQL Informix Oracle PostgreSQL,1721663102,_json
+1621,Splunk Common Information Model (CIM),datamodel,1721663102,_json
+1621,Splunk Common Information Model (CIM),security data model,1721663102,_json
+4217,Splunk Add-on for Infrastructure,Infrastructure monitoring,1721663102,_json
+4055,Splunk Add-on for Microsoft Office 365,Microsoft Office 365,1721663102,_json
+4055,Splunk Add-on for Microsoft Office 365,office 365,1721663102,_json
+4055,Splunk Add-on for Microsoft Office 365,office 365 audit log,1721663102,_json
+4055,Splunk Add-on for Microsoft Office 365,"pull service status, service messages, and management activity logs from the Office 365 Management API",1721663102,_json
+4055,Splunk Add-on for Microsoft Office 365,Microsoft Office 365 office 365,1721663102,_json
+2962,Splunk Add-on Builder,build apps,1721663102,_json
+2962,Splunk Add-on Builder,tools to build apps,1721663102,_json
+2962,Splunk Add-on Builder,cim compliance,1721663102,_json
+2962,Splunk Add-on Builder,build alert action,1721663102,_json
+2962,Splunk Add-on Builder,build add-on,1721663102,_json
+2962,Splunk Add-on Builder,build technology add-on,1721663102,_json
+2962,Splunk Add-on Builder,build app,1721663102,_json
+1809,Splunk Add-on for Stream Wire Data,Ingest PCAP,1721663102,_json
+1809,Splunk Add-on for Stream Wire Data,snmp data,1721663102,_json
+1809,Splunk Add-on for Stream Wire Data,DHCP data,1721663102,_json
+1809,Splunk Add-on for Stream Wire Data,collect wire data from protocol DHCP DNS FTP HTTP IMAP IP SNMP TCP  TNS XMPP,1721663102,_json
+1809,Splunk Add-on for Stream Wire Data, wire data,1721663102,_json
+1809,Splunk Add-on for Stream Wire Data,stream  data,1721663102,_json
+2757,Palo Alto Networks Add-on for Splunk,palo alto,1721663102,_json
+2757,Palo Alto Networks Add-on for Splunk,palo alto network,1721663102,_json
+2757,Palo Alto Networks Add-on for Splunk,palo alto network data,1721663102,_json
+2757,Palo Alto Networks Add-on for Splunk,Aperture logging API to collect incidents and activity from your SaaS apps.,1721663102,_json
+2757,Palo Alto Networks Add-on for Splunk,cortex,1721663102,_json
+4175,Splunk App for Jenkins,Jenkins data,1721663102,_json
+2757,Palo Alto Networks Add-on for Splunk,Cortex Data Lake,1721663102,_json
+2757,Palo Alto Networks Add-on for Splunk,"Cortex XDR,",1721663102,_json
+2757,Palo Alto Networks Add-on for Splunk,Firewall  Panorama,1721663102,_json
+4175,Splunk App for Jenkins,Jenkins,1721663102,_json
+4175,Elasticsearch Data Integrator - Modular Input,Elasticsearch,1721663102,_json
+1928,Splunk Add-on for ServiceNow,ServiceNow,1721663102,_json
+1928,Splunk Add-on for ServiceNow,ServiceNow incident,1721663102,_json
+4283,VirusTotal Malware Lookup for Splunk,VirusTotal,1721663102,_json
+4283,VirusTotal Malware Lookup for Splunk,VirusTotal Malware,1721663102,_json
+3504,Duo Splunk Connector,Duo,1721663102,_json
+7407,Cisco Security Cloud,Cisco Security,1721663102,_json
+4388,Cisco Secure Firewall App for Splunk,Cisco firewall,1721663102,_json
+1467,Cisco Networks Add-on for Splunk Enterprise,Cisco WLAN Controllers,1721663102,_json
+1467,Cisco Networks Add-on for Splunk Enterprise,Cisco Access Points,1721663102,_json
+1467,Cisco Networks Add-on for Splunk Enterprise,Cisco Switches Cisco Routers,1721663102,_json
+1761,Splunk Add-on for Cisco ESA,logs of Cisco ESA,1721663102,_json
+1761,Splunk Add-on for Cisco ESA,Cisco ESA,1721663102,_json
+1747,Splunk Add-on for Cisco WSA,Cisco Web Security Appliances,1721663102,_json
+1747,Splunk Add-on for Cisco WSA,Cisco WSA,1721663102,_json
+1620,Splunk Add-on for Cisco ASA,Cisco ASA devices,1721663102,_json
+1620,Splunk Add-on for Cisco ASA,Cisco ASA,1721663102,_json
+3435,Splunk Security Essentials,Security Data Journey Get prescriptive security and data recommendations and establish a data strategy to develop a security maturity roadmap,1721663102,_json
+3435,Splunk Security Essentials,Cybersecurity Frameworks automatic mapping of data and security detections to MITRE ATT&CK® and Cyber Kill Chain® framework,1721663102,_json
+3435,Splunk Security Essentials,Find security content for Splunk Cloud and Splunk's SIEM and SOAR,1721663102,_json
+3435,Splunk Security Essentials,security use cases and discover security content to start address threats and challenges.,1721663102,_json
+3435,Splunk Security Essentials,"security use cases, security use case, Cybersecurity Frameworks",1721663102,_json
+5390,IT Essentials Learn,"variety of procedures for IT use cases such as AWS, VMware, Apache, and more",1721663102,_json
+5390,IT Essentials Learn,it use cases,1721663102,_json
+4217,Splunk Add-on for Infrastructure,infrastructure monitoring use cases,1721663102,_json
+4217,Splunk Add-on for Infrastructure,infrastructure monitoring and troubleshooting.,1721663102,_json
+4217,Splunk Add-on for Infrastructure,monitor  infrastructure,1721663102,_json
+4217,Splunk Add-on for Infrastructure,infrastructure logs and metrics,1721663102,_json
+5037,Atlassian JIRA Issue Alerts add-on for Splunk,alert to jira,1721663102,_json
+6211,Splunk Add-on for Jira Cloud,Jira,1721663102,_json
+6211,Splunk Add-on for Jira Cloud,Jira Cloud,1721663102,_json
+4175,Splunk App for Jenkins,jenkins,1721663102,_json
+4175,Splunk App for Jenkins,jenkins job,1721663102,_json
+6254,Splunk Add-on for Github,Github,1721663102,_json
