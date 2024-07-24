@@ -135,6 +135,13 @@ class Solutionguidance extends Component {
                     let solution;
                     if (response.results && response.results.length >0) {
                         solution = response.results[0]['app_name'];
+                        if (solution === "Proficio HDE") {
+                            let ref_results = this.state.app_results
+                            if (this.state.app_results.length > 0) {
+                                console.log("setvalue:" + this.state.app_results[0].title)
+                                solution = this.state.app_results[0].title;
+                            }
+                        }
                         console.log(solution)
                     }
                     if (solution) {

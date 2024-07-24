@@ -1,4 +1,4 @@
-# IntelligentSearch
+# Intelligent Searcher
 
 This App is designed to be an intelligent Splunk App Searcher that leverages Splunk AI capability to automatically suggest the appropriate Splunk app from Splunkbase based on the text description of the business requirements entered by the user. By leveraging machine learning toolkit, the customer could directly search by their problems/requirements instead of just searching by technology/keywords. This App also supports search with multi language to help Customers all around the world.
 

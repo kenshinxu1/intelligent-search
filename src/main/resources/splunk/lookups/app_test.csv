@@ -115,3 +115,10 @@ app_id,app_name,description,_indextime,_sourcetype
 4175,Splunk App for Jenkins,jenkins,1721663102,_json
 4175,Splunk App for Jenkins,jenkins job,1721663102,_json
 6254,Splunk Add-on for Github,Github,1721663102,_json
+3110,Splunk Add-on for Microsoft Cloud Services,microsoft cloud data ingest,1721663102,_json
+3719,Splunk Add-on for Amazon Kinesis Firehose,aws kinesis,1721663102,_json
+7305,Threatbook-TIP,threatbook,1721663102,_json
+3186,Splunk Add-on for Apache Web Server,apache server log,1721663102,_json
+3258,Splunk Add-on for NGINX,nginx server,1721663102,_json
+4657,Flow Map Viz,flow map visualization,1721663102,_json
+4460,Heat Map Viz,heatmap,,
