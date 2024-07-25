@@ -35,7 +35,7 @@ function AppPanel(props) {
             {
                 map(cardList, card => {
 
-                    return  <Card to={card.path} openInNewContext>
+                    return  <Card to={card.app_url} openInNewContext>
                               <Card.Header title={card.app_name} truncateTitle={false} subtitle={`Download Count:${card.download_count}`} />
                                 <Card.Body style={cardContentStyle}>
                                     <div>{card.description}</div>

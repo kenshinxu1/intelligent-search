@@ -1,0 +1,33 @@
+<dashboard version="1.1" theme="dark">
+  <label>splunkappanalytic2</label>
+  <row>
+    <panel>
+      <viz type="wordcloud_app.wordcloud">
+        <search>
+          <query>| inputlookup apps.csv
+| fields app_name
+| eval app_name=split(app_name, " ")
+| mvexpand app_name
+| where app_name!="for" and app_name!="Splunk" and app_name!="Add-On" and app_name!="App" and app_name!="Add-on"
+| stats count by app_name
+| sort 200 - count</query>
+          <earliest>0</earliest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+        <option name="wordcloud_app.wordcloud.alignmentMode">horizontal</option>
+        <option name="wordcloud_app.wordcloud.backgroundColor">#222</option>
+        <option name="wordcloud_app.wordcloud.colorBy">colorMode</option>
+        <option name="wordcloud_app.wordcloud.colorMode">categorical</option>
+        <option name="wordcloud_app.wordcloud.maxColor">#3fc77a</option>
+        <option name="wordcloud_app.wordcloud.minColor">#d93f3c</option>
+        <option name="wordcloud_app.wordcloud.numOfBins">8</option>
+        <option name="wordcloud_app.wordcloud.splunkTastic">false</option>
+        <option name="wordcloud_app.wordcloud.useColors">true</option>
+      </viz>
+    </panel>
+  </row>
+</dashboard>

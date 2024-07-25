@@ -91,11 +91,10 @@ class Solutionguidance extends Component {
 
         const param = {
             offset: 0,
-            limit:10,
+            limit: 8,
             query: query,
             order: 'relevance',
-            include: "release,categories,created_by,icon,download_count",
-
+            include: "display_author,release,categories,created_by,icon",
         }
 
         this.setState({searching:true});
@@ -103,10 +102,11 @@ class Solutionguidance extends Component {
         fetch(createURL(APP_SEARCH_URL,param))
             .then(handleResponse(200))
             .then((data) => {
-                console.log(data.results);
+                console.log(data);
                 this.setState({app_results: data.results})
             })
-            .catch(handleError(_('Failed to get APP result')))
+            .catch(
+                handleError('Failed to get APP result'))
             .catch(error => {
                     console.log(error);
                 }
@@ -138,42 +138,13 @@ class Solutionguidance extends Component {
                         if (solution === "Proficio HDE") {
                             let ref_results = this.state.app_results
                             if (this.state.app_results.length > 0) {
-                                console.log("setvalue:" + this.state.app_results[0].title)
-                                solution = this.state.app_results[0].title;
+                                console.log("setvalue:" + this.state.app_results[0].app_name)
+                                this.setState({app_solution: this.state.app_results[0],searching:false})
                             }
+                        } else {
+                            console.log(solution)
+                            this.setState({app_solution: response.results[0],searching:false})
                         }
-                        console.log(solution)
-                    }
-                    if (solution) {
-                        const param = {
-                            offset: 0,
-                            limit: 1,
-                            query: solution,
-                            order: 'relevance',
-                            include: "release,categories,created_by,icon,download_count",
-                        }
-                        fetch(createURL(APP_SEARCH_URL, param))
-                            .then(handleResponse(200))
-                            .then((data) => {
-                                console.log(data.results);
-                                let recommand_app = {};
-                                if (!data.results || data.results.length == 0) {
-                                    recommand_app = {title: solution,installed:true , icon:"https://cdn.apps.splunk.com/media/public/icons/17c63348-5a1c-11e8-8752-02f13bdc2585.png"}
-                                }else if (data.results[0].title != solution){
-                                    recommand_app = data.results[0]
-                                    recommand_app.title = solution;
-                                    recommand_app.installed = true;
-                                }else{
-                                    recommand_app = data.results[0]
-                                }
-                                console.log(data.results);
-                                this.setState({app_solution: recommand_app,searching:false})
-                            })
-                            .catch(handleError(('Failed to get solution')))
-                            .catch(error => {
-                                console.log(error);
-                                this.setState({searching:false});
-                            });
                     }
                 },
                 error: err => {
@@ -293,9 +264,9 @@ class Solutionguidance extends Component {
                             {
                                 searching ? (<WaitSpinner size="large"/>) : app_solution ? (
                                     <Card style={style}
-                                          to={app_solution.installed ? null : app_solution.path} openInNewContext>
-                                        <Card.Header title={app_solution.title} truncateTitle={false}
-                                                     subtitle={`Download Count:${app_solution.download_count} ${app_solution.installed ? "   Already installed" : ""}`}/>
+                                          to={app_solution.app_url} openInNewContext>
+                                        <Card.Header title={app_solution.app_name} truncateTitle={false}
+                                                     subtitle={`Download Count:${app_solution.download_count} `}/>
                                         <Card.Body>
                                             <img src={app_solution.icon} alt="empty" style={{
                                                 height: 150,
@@ -317,12 +288,6 @@ class Solutionguidance extends Component {
                             // style={StyledGroup}
                         >
                             <AppPanel cardList={app_results} tab={200}/>
-                            {app_results && app_results.length > 6 ? (<Paginator
-                                onChange={this.handlePageChange}
-                                current={this.state.page}
-                                alwaysShowLastPageLink
-                                totalPages={3}
-                            />) : null}
                         </ControlGroup>
                     </div>
                 </TabLayout.Panel>

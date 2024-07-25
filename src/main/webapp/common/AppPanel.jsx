@@ -26,7 +26,7 @@ function AppPanel(props) {
         <CardLayout cardWidth={tab?tab:250}  wrapCards={true} style={{maxWidth: 1500}}>
             {
                 map(cardList, card => {
-                    return  <Card to={card.path} openInNewContext>
+                    return  <Card to={card.app_url} openInNewContext>
                               <Card.Header title={card.title?card.title:card.app_name} truncateTitle={false} subtitle={`Download Count:${card.download_count}`} />
                                 <Card.Body>
                                     <img src={card.icon} alt="empty" style={imgStyle}/>
